@@ -1,0 +1,20 @@
+apiVersion: cloud.google.com/v1
+kind: BackendConfig
+metadata:
+  name: fleet-backend-config
+  labels:
+    app.kubernetes.io/name: fleet
+    app.kubernetes.io/part-of: fleet
+spec:
+  healthCheck:
+    checkIntervalSec: 15
+    timeoutSec: 5
+    healthyThreshold: 1
+    unhealthyThreshold: 3
+    type: HTTP
+    requestPath: /healthz
+    port: 8080
+  timeoutSec: 600
+  connectionDraining:
+    drainingTimeoutSec: 60
+
