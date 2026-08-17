@@ -68,7 +68,7 @@ jobs:
       - name: Set up gcloud and GKE auth plugin
         uses: google-github-actions/setup-gcloud@v2
         with:
-          version: "578.0.0"
+          version: "565.0.0"
           install_components: gke-gcloud-auth-plugin
 
       - name: Get tst-kube credentials
