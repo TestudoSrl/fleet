@@ -165,9 +165,10 @@ jobs:
             root_code="$(curl -sS -o /dev/null -w '%{http_code}' \
               --max-time 15 "https://${HOSTNAME}/" || true)"
             echo "Attempt ${attempt}: health=${health_code:-000} root=${root_code:-000}"
-            if [ "${health_code}" = "200" ] && [ "${root_code}" = "200" ]; then
+            if [ "${health_code}" = "200" ] && \
+              { [ "${root_code}" = "200" ] || [ "${root_code}" = "307" ]; }; then
               curl -fsS "https://${HOSTNAME}/healthz" >/dev/null
-              curl -fsS "https://${HOSTNAME}/" | grep -qi fleet
+              curl -fsSL "https://${HOSTNAME}/" | grep -qi fleet
               exit 0
             fi
             sleep 10
