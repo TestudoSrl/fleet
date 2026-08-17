@@ -53,7 +53,7 @@ jobs:
             echo "::error::Missing Development configuration: ${missing[*]}"
             exit 1
           fi
-          for key in mysql-password mysql-root-password redis-password fleet-server-private-key; do
+          for key in mysql-password mysql-root-password redis-password fleet-server-private-key fleet-license-key; do
             grep -q "^${key}=" <<<"${FLEET_SECRET_BLOB}" || {
               echo "::error::FLEET_SECRETS_ENV is missing ${key}"
               exit 1

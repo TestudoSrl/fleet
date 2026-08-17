@@ -36,11 +36,16 @@ mysql-password=<random value>
 mysql-root-password=<different random value>
 redis-password=<random value>
 fleet-server-private-key=<at least 32 random bytes>
+fleet-license-key=<Fleet Premium license key>
 ```
 
 The environment variable `GCP_DEV_PROJECT` must be `testudo-dev`. No secret
 file belongs in Git. The workflow materializes `fleet-secrets` directly in the
 cluster and deletes its temporary runner file.
+
+The current Fleet Premium license is cryptographically validated for the
+`testudosrl.com` organization, two devices, and expiration on 2027-08-17. The
+license value itself remains only in GitHub and Kubernetes secrets.
 
 ## Deployment order
 

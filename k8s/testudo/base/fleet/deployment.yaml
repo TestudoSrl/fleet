@@ -99,6 +99,11 @@ spec:
                 secretKeyRef:
                   name: fleet-secrets
                   key: fleet-server-private-key
+            - name: FLEET_LICENSE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: fleet-secrets
+                  key: fleet-license-key
             - name: FLEET_MYSQL_ADDRESS
               value: mysql:3306
             - name: FLEET_MYSQL_DATABASE
@@ -200,4 +205,3 @@ spec:
         - name: osquery-logs
           emptyDir:
             sizeLimit: 1Gi
-
